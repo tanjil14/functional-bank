@@ -22,7 +22,12 @@ function updateMainBalance(id,transaction,type){
     if(type==true){
           mainBalance.innerText = previousMainBalance + transaction;
     }else{
-          mainBalance.innerText = previousMainBalance - transaction;
+          if(previousMainBalance>=transaction){
+            mainBalance.innerText = previousMainBalance - transaction;
+          }
+          else{
+            alert("You can't withdraw more than main balance!")
+          }
     }
 }
 
@@ -47,8 +52,12 @@ document.getElementById('withdraw-btn').addEventListener('click', function () {
     //update amount balance
     updateMainBalance('total-balance',newWithdraw,false)
     }
+    else{
+        alert('invalid credential!')
+    }
 })
 
+// old way 
 
 /* document.getElementById('deposit-btn').addEventListener('click', function () {
     //get input amount deposit
